@@ -1,34 +1,23 @@
 # get input - user string for search query
-# deliver output - recommended game titles
 
-# from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.pipeline import Pipeline
-import nltk
+def get_user_query_matrix():
 
-# get user query
-print("Enter a query:")
-query_string = input()
+    # get user query
+    print("Enter a query:")
+    query_string = input()
 
-# corpus = user query
-corpus = [query_string]
-print(corpus)
+    # transform the user query into a tf-idf vector
+    # corpus = user query
+    corpus = [query_string] # list of strings
+    v = TfidfVectorizer()
+    tfidf_query_matrix = v.fit_transform(corpus)
+    print(tfidf_query_matrix)
+    print(v.get_feature_names_out())
 
-# vocab = word tokenized list of reviews
+    for i, feature in enumerate(v.get_feature_names_out()):
+        print(i, feature)
 
-vocab = ["ocarina", "of", "time", "breath", "the", "wild"]
-print(vocab)
-
-pipe = Pipeline([('count', CountVectorizer(vocabulary=vocab)),
-                ('tfid', TfidfTransformer())]).fit(corpus)
-
-print(pipe['count'].transform(corpus).toarray())
-print(pipe['tfid'].idf_)
-
-v = TfidfVectorizer()
-review_matrix = v.fit_transform(corpus)
-print(review_matrix.shape) # (number of documents, number of terms)
-print(review_matrix)
+    return tfidf_query_matrix
