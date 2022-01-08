@@ -8,4 +8,7 @@ The [dataset](https://www.kaggle.com/dahlia25/metacritic-video-game-comments) wa
 
 ## How to Run
 1. Download the dataset from the link above and put the csv files in the root directory
-2. Run query_input.py
+2. Run main.py
+
+## Threats to Validity
+1. The search engine only uses the first review for each game, which skews review length and may over- or under-influence the review content of specific games. In future, this will be fixed by accounting for multiple reviews for one game and incorporating this into the TF-IDF algorithm
