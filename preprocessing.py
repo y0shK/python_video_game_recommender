@@ -4,25 +4,34 @@
 # input: raw csv file
 # output: custom data structure
 
-# create custom data structure
-# list of strings which are transformed into tf-idf vectors
-# [{game1: review1}, {game2: review2}, ...]
-# extract just one review per game
+# create custom data structure class
 
-def get_review_corpus(comments):
-    total_keys = []
-    total_list = []
+class VideoGame:
 
-    for i in range(len(comments)):
-        game = comments["Title"][i]
-        review = comments["Comment"][i]
+    def __init__(self, title, review):
+        self.title = title
+        self.review = review
+        
+class VideoGameCollection:
 
-        if game not in total_keys:
-            total_keys.append(game)
-            game_dict = {}
-            game_dict[game] = review
-            total_list.append(game_dict)
+    def __init__(self):
+        self.data = {}
 
-    # print(total_keys)
-    # print(total_list[:2])
-    return total_list[:2]
+    def addToCollection(self, game: VideoGame):
+        if game.title not in self.data.keys():
+            self.data[game.title] = game.review
+            print("game added")
+
+    def toString(self):
+        for k, v in self.data.items():
+            print("Title: ", k)
+            print("Review: ", v)
+
+    def getReviews(self):
+        reviewList = []
+        for v in self.data.values():
+            reviewList.append(v)
+        return reviewList
+
+    def getData(self):
+        return self.data
