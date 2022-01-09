@@ -38,16 +38,16 @@ comments = pd.read_csv("metacritic_game_user_comments.csv")
 
 games = VideoGameCollection()
 
-for i in range(0, 1000):
+for i in range(len(comments)):
     title = comments["Title"][i]
     review = comments["Comment"][i]
     g = VideoGame(title, review)
-    print(g.title)
+    # print(g.title)
     games.addToCollection(g)
 print(i)
 
 print("success")
-print(games.toString())
+# print(games.toString())
 
 reviews = games.getReviews()
 gamesData = games.getData()
@@ -73,11 +73,11 @@ for k, v in gamesData.items():
     #v = [v]
     #print(v)
     m = get_unfitted_matrix(user_query, [v])
-    print(user_matrix.shape)
-    print(m.shape)
-    if cosine_similarity(user_matrix, m) > 0.5:
-        print("cos similarity greater")
+    #print(user_matrix.shape)
+    #print(m.shape)
+    if cosine_similarity(user_matrix, m) >= 0.8:
+        # print("cos similarity greater")
         game_titles.append(k)
-    print(cosine_similarity(user_matrix, m))
+    #print(cosine_similarity(user_matrix, m))
 
 print(game_titles)

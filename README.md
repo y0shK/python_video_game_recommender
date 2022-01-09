@@ -14,6 +14,9 @@ The [dataset](https://www.kaggle.com/dahlia25/metacritic-video-game-comments) wa
 ### Python member variables
 - https://stackoverflow.com/questions/9781334/python-member-variable-of-instance-works-like-member-variable-and-some-works-li
 
+### Modify Python dictionary in-place
+- https://stackoverflow.com/questions/41825868/update-python-dictionary-add-another-value-to-existing-key
+
 ### Handle incompatible TF-IDF shapes
 - https://stackoverflow.com/questions/40366175/handle-incompatible-matrices-shapes-in-tf-idf
 

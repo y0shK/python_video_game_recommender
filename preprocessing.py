@@ -18,9 +18,17 @@ class VideoGameCollection:
         self.data = {}
 
     def addToCollection(self, game: VideoGame):
+
+        # include all reviews for each game
+        # if the game title is not in keys, then it (and its first review) are added to data {}
+        # else, at least one review is in data for the game, so we add to that list
+
         if game.title not in self.data.keys():
-            self.data[game.title] = game.review
-            print("game added")
+            self.data[game.title] = str(game.review)
+            # print("game added")
+        else:
+            self.data[game.title] = self.data[game.title] + " " + str(game.review)
+            # print("game appended to")
 
     def toString(self):
         for k, v in self.data.items():
